@@ -20,22 +20,22 @@
 
 
 
-        @if(app()->getLocale() == 'en')
-        <li style="padding: 8px;">
-          <a href="{{ url('language/ar') }}">
-             <img src="{{ asset('public/uploads/ar.png')}}"  style="width:30px;height:25px" alt="Tabler" class="navbar-brand-image">
-           {{__('admin.arabic')}}
-          </a>
-        </li>
-        @else
-        <li style="padding: 8px;">
-          <a href="{{ url('language/en') }}">
-          <img src="{{ asset('public/uploads/en.png')}}" style="width:30px;height:25px" alt="Tabler" class="navbar-brand-image">
-          {{__('admin.english')}}
+        <!-- @if(app()->getLocale() == 'en') -->
+        <!-- <li style="padding: 8px;"> -->
+          <!-- <a href="{{ url('language/ar') }}"> -->
+             <!-- <img src="{{ asset('public/uploads/ar.png')}}"  style="width:30px;height:25px" alt="Tabler" class="navbar-brand-image"> -->
+           <!-- {{__('admin.arabic')}} -->
+          <!-- </a> -->
+        <!-- </li> -->
+        <!-- @else -->
+        <!-- <li style="padding: 8px;"> -->
+          <!-- <a href="{{ url('language/en') }}"> -->
+          <!-- <img src="{{ asset('public/uploads/en.png')}}" style="width:30px;height:25px" alt="Tabler" class="navbar-brand-image"> -->
+          <!-- {{__('admin.english')}} -->
 
-        </a>
-        </li>
-        @endif
+        <!-- </a> -->
+        <!-- </li> -->
+        <!-- @endif -->
 
         <li style="padding: 14px;" title="واجهه الموقع" href="#navbar-layout" data-bs-toggle="tooltip" data-bs-placement="bottom">
           <a target="_blank" href="{{ url('/') }}"><i class="fa-solid fa-globe"></i></a>

@@ -54,7 +54,7 @@ $textAlign = $isRtl ? 'text-end' : 'text-start';
   .fixed-card {
     position: relative;
     width: 100%;
-    height: 320px;
+    height: 240px;
     overflow: hidden;
     border-radius: 10px;
   }
@@ -111,7 +111,7 @@ $textAlign = $isRtl ? 'text-end' : 'text-start';
   }
 
   @media (max-width: 991px) {
-    .fixed-card { height: 260px; }
+    .fixed-card { height: 200px; }
     .overlay-text { font-size: 18px; }
   }
 

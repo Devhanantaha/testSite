@@ -7,7 +7,7 @@
   <div class="container-xl">
     <div class="row g-2 align-items-center">
       <div class="col">
-        {{ Breadcrumbs::render('blogs') }}
+        {{ Breadcrumbs::render('news') }}
 
       </div>
       <div class="col-auto ms-auto d-print-none">
@@ -47,12 +47,12 @@
                       <path d="M6 15l6 -6l6 6"></path>
                     </svg>
                   </th>
-                  <th> {{__('admin.blogs.title')}}</th>
-                  <th> {{__('admin.blogs.published_at')}}</th>
-                  <th> {{__('admin.blogs.active_status')}}</th>
-                  <th>{{ __('admin.blogs.field_photo') }}</th>
+                  <th> {{__('admin.news.title')}}</th>
+                  <th> {{__('admin.news.published_at')}}</th>
+                  <th> {{__('admin.news.active_status')}}</th>
+                  <th>{{ __('admin.news.field_photo') }}</th>
 
-                  <th>{{ __('admin.blogs.actions') }}</th>
+                  <th>{{ __('admin.news.actions') }}</th>
                 </tr>
               </thead>
               <tbody>

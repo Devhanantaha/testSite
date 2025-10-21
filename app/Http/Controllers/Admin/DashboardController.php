@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Client;
-use App\Models\Instructor;
-use App\Models\Student;
-use App\Models\Subscription;
-use App\Models\Course;
+use App\Models\ContactMessage;
+use App\Models\Field;
+use App\Models\Level;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Auth;
 use Carbon\Carbon;
@@ -36,50 +35,21 @@ class DashboardController extends Controller
    public function index()
    {
 
-      $data['title'] = $this->title;
-      $data['route'] = $this->route;
-      $data['view'] = $this->view;
-      $instructors_profits = Instructor::sum('total_balance');
-      $instructors_current_balance =Instructor::sum('current_balance'); 
-      $subscriptions = Subscription::sum('paid');
-      $data['platform_profit'] = $subscriptions - $instructors_profits;
-      $data['instructor_total_balance'] = $instructors_profits;
-      $data['instructor_current_balance'] = $instructors_current_balance;
+
+ $projects_count = Project::count();           // returns integer
+    $levels_count = Level::count();               // returns integer
+    $fields_count = Field::count();               // returns integer
+    $contact_messages_count = ContactMessage::count(); // returns integer
+
+    return view('admin.index', compact(
+        'projects_count',
+        'levels_count',
+        'fields_count',
+        'contact_messages_count'
+    ));
 
 
-      /** Most selling courses  */
-      $courses = Course::withCount('subscriptions')
-         ->orderBy('subscriptions_count', 'desc')
-         ->take(10)
-         ->get();
-      $data['labels'] = $courses->pluck('name');
-      $data['subscriptions_count'] = $courses->pluck('subscriptions_count');
 
-
-      /** subscription charts */
-      // Get the last 7 days of subscriptions
-      $subscriptions = Subscription::where('created_at', '>=', now()->subDays(7))->get();
-      $subscriptionsByDay = $subscriptions->groupBy(function ($subscription) {
-         return $subscription->created_at->format('Y-m-d');
-      });
-
-      $data['subscriptionslabels'][] = array();
-         $data['subscriptionscount'][] = array();
-      foreach ($subscriptionsByDay as $day => $subscriptions) {
-         $data['subscriptionslabels'][] = $day;
-         $data['subscriptionscount'][] = $subscriptions->count();
-      }
-
-      /**  */
-
-      /** Student Chart  */
-      $students = Student::withCount('subscriptions')->orderBy('subscriptions_count', 'desc')->take(10)->get();
-      $data['studentname'] = $students->pluck('name');
-      $data['studentSubscriptionCount'] = $students->pluck('subscriptions_count');
-      /**  */
-
-
-      return view($this->view . '.index', $data);
    }
 
 

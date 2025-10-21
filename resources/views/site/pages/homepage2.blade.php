@@ -26,19 +26,7 @@
     </div>
   
   
-        @include('site.partials.map')
-
-  
-  
-  
-  
-
-  
-  
-  
-  
-  
-
+        <!-- @include('site.partials.map') -->
 
     @include('site.partials.news')
 

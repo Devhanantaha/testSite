@@ -1,5 +1,57 @@
 <?php
 return [
+
+
+
+
+
+
+
+
+
+    'project_details' => 'تفاصيل المشروع',
+    'created_at' => 'تاريخ الانشاء',
+    'updated_at' => 'اخر تحديث',
+
+    'projects' => [
+
+        'title'   => 'المشاريع',
+        'title_ar' => 'العنوان (بالعربية)',
+        'title_en' => 'العنوان (بالإنجليزية)',
+        'level'   => 'المرحلة',
+        'images'  => 'الصور',
+        'status'  => 'الحالة',
+        'actions' => 'الإجراءات',
+        'add'     => 'إضافة مشروع',
+        'edit'    => 'تعديل مشروع',
+        'list'    => 'قائمة المشاريع',
+        'description_ar' => 'الوصف بالعربية',
+        'description_en' => 'الوصف بالانجليزية',
+
+
+
+    ],
+
+
+    'contact_messages_title'  => 'رسائل التواصل',
+    'field_title' =>'مجالات العمل',
+
+    'fields' => [
+        'list' => 'مجالات العمل',
+        'title_en' => 'العنوان (إنجليزي)',
+        'title_ar' => 'العنوان (عربي)',
+        'description_en' => 'الوصف (إنجليزي)',
+        'description_ar' => 'الوصف (عربي)',
+        'images' => 'الصور',
+        'videos' => 'الفيديوهات',
+        'actions' => 'الإجراءات',
+        'add_new' => 'إضافة حقل جديد',
+        'edit' => 'تعديل الحقل',
+        'delete' => 'حذف الحقل',
+        'show' => 'عرض الحقل',
+    ],
+    'btn_add_new' => 'إضافة جديد',
+    'btn_refresh' => 'تحديث',
     'edit' => 'تعديل',
     'show' => 'عرض تفاصيل',
     'delete' => 'حذف',
@@ -228,13 +280,15 @@ return [
         'description_en'     => 'الوصف بالإنجليزية',
     ],
 
-     "banners" => [
-     'banners_management' => 'الاعلانات',
-     'list' => 'عرض الاعلانات',
-     'title' => 'عنوان ',
-     'add' => 'إضافة ',
+
+
+     "news" => [
+     'news_management' => 'الاخبار',
+     'list' => 'عرض الاخبار',
+     'title' => 'عنوان الخبر',
+     'add' => 'إضافة خبر',
      'description' => 'تفاصيل',
-     'edit' => 'تعديل ',
+     'edit' => 'تعديل خبر',
      'active_status' => 'حالة الظهور',
      'actions' => 'إجراء',
      'field_photo' => 'الصورة',
@@ -244,10 +298,28 @@ return [
      'title_en'           => 'العنوان بالإنجليزية',
      'description_ar'     => 'الوصف بالعربية',
      'description_en'     => 'الوصف بالإنجليزية',
-     'url' =>'رابط الاعلان'
  ],
+
+    "banners" => [
+        'banners_management' => 'الاعلانات',
+        'list' => 'عرض الاعلانات',
+        'title' => 'عنوان ',
+        'add' => 'إضافة ',
+        'description' => 'تفاصيل',
+        'edit' => 'تعديل ',
+        'active_status' => 'حالة الظهور',
+        'actions' => 'إجراء',
+        'field_photo' => 'الصورة',
+        'published_at' => 'تاريخ النشر',
+        'more_details' => 'مزيد من التفاصيل',
+        'title_ar'           => 'العنوان بالعربية',
+        'title_en'           => 'العنوان بالإنجليزية',
+        'description_ar'     => 'الوصف بالعربية',
+        'description_en'     => 'الوصف بالإنجليزية',
+        'url' => 'رابط الاعلان'
+    ],
     "levels" => [
-        'title' => 'مراحل الدورة',
+        'title' => 'مراحل ',
         'add' => ',مرحلة جديد',
         'edit' => 'تعديل مرحلة',
         'name'  => "عنوان مرحلة",
@@ -257,6 +329,7 @@ return [
         'track' => 'المسار',
         'instructor' => 'المدرب',
         'lectures_number' => 'عدد المحاضرات',
+        'name_ar' => 'الإسم باللغه العربية',
 
         'start_date' => 'تاريخ البدايه',
         'end_date' => 'تاريخ النهاية',
@@ -314,14 +387,14 @@ return [
 
     ],
     "countries" => [
-        "title" => "عرض الدول",
+        "title" => "عرض المحافظات",
         "name"  => "الاسم",
         "code" => "الكود",
         "field_action" => "إجراء",
         "status"  => "حالة الظهور",
         "field_photo" => "الصورة",
-        'add'  => 'إضافة دولة',
-        'edit'  => 'تعديل دولة'
+        'add'  => 'إضافة محافظة',
+        'edit'  => 'تعديل محافظة'
     ],
     "students" => [
         'courses' => 'قائمة الدورات',
@@ -513,7 +586,8 @@ return [
         'this_year_subscriptions_total' => 'إجمالى إشتراكات العام',
         'this_month_subscriptions_total' => 'إجمالى إشتراكات الشهر الحالى',
         'instructors_total_balance' => 'اجمالي أرباح المدربين',
-        'instructor_current_balance' => 'إجمالي الرصيد الحالي للمدربين'
+        'instructor_current_balance' => 'إجمالي الرصيد الحالي للمدربين',
+        'statics' => 'إحصائيات'
 
 
     ],
@@ -661,13 +735,18 @@ return [
         'actions'  => 'إجراء'
     ],
     'aboutus' => [
+        'section1' => 'من نحن',
+        'section2' => 'مهمتنا',
+        'section3' => 'أهدافنا',
+        'section4' => 'تاريخنا',
+        'title_ar' => 'العنوان بالعربية',
+        'title_en' => 'العنوان بالإنجليزية',
+        'description_ar' => 'الوصف بالعربية',
+        'description_en' => 'الوصف بالإنجليزية',
+        'image' => 'الصورة',
         'title'  => ' عنوان الصفحة',
         'descriptions' => 'الوصف',
         'background_image' => 'الصورة الاساسية',
-        'section1'  => 'البيانات الاساسية',
-        'section2'  => 'إنجازاتنا',
-        'section3'  => 'مهمتنا',
-        'section4'  => 'رسالتنا وأهدافنا',
         'course_number'  => 'عدد الدورات التدريبية',
         'student_number' => 'عدد الطلاب',
         'instructor_number' => 'عدد المدربين',
@@ -1168,6 +1247,10 @@ return [
     'student_mark' => 'درجة الطالب',
     'export_all' => 'تصدير الكل',
     'not_available' => 'غير متاح',
+    'contact_messages' => 'رسائل التواصل',
+    'name_ar' => 'الإسم بالعربية',
+    'name_en'  => 'الإسم بالانجليزية',
+    'country' => 'الدولة'
 
 
 

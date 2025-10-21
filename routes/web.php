@@ -81,6 +81,11 @@ Route::group(
         })->name('about');
 
 
+        Route::get('/about-details', [HomeController::class, 'aboutDetails'])->name('about.details');
+        Route::get('/mission-details', [HomeController::class, 'missionDetails'])->name('mission.details');
+        Route::get('/goals-details', [HomeController::class, 'goalsDetails'])->name('goals.details');
+        Route::get('/history-details', [HomeController::class, 'historyDetails'])->name('history.details');
+
         // 🏠 Main Pages
         Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 

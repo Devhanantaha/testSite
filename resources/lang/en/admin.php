@@ -1,6 +1,24 @@
 <?php
 return [
+    
     'edit' => 'edit',
+    'fields' => [
+        'title_en' => 'Title (English)',
+        'title_ar' => 'Title (Arabic)',
+        'description_en' => 'Description (English)',
+        'description_ar' => 'Description (Arabic)',
+        'images' => 'Images',
+        'videos' => 'Videos',
+        'actions' => 'Actions',
+        'add_new' => 'Add New Field',
+        'edit' => 'Edit Field',
+        'delete' => 'Delete Field',
+        'show' => 'View Field',
+        'title' =>'Fields'
+    ],
+    'btn_add_new' => 'Add New',
+    'btn_refresh' => 'Refresh',
+
     'show' => 'show details',
     'delete' => 'delete',
     'date' => 'date',

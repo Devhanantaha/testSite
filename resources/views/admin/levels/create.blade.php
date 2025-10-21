@@ -1,177 +1,92 @@
 @extends('admin.layouts.master')
-@section('title', trans('module_staff'))
+@section('title', __('admin.add_level'))
 
 @section('content')
-
 
 <div class="page-header d-print-none">
   <div class="container-xl">
     <div class="row g-2 align-items-center">
       <div class="col">
-        {{ Breadcrumbs::render('add-levels',$course) }}
-
+        {{ Breadcrumbs::render('add-levels') }}
       </div>
-      <!-- Page title actions -->
       <div class="col-auto ms-auto d-print-none">
         <div class="btn-list">
-
           <div class="card-header">
             <div class="card-block">
-            <a href="{{ url('admin/courses/'.$course->id.'/levels') }}" class="btn btn-rounded btn-primary">{{ __('admin.btn_back') }}</a>
-
+              <a href="{{ route('admin.levels.index') }}" class="btn btn-rounded btn-primary">
+                {{ __('admin.back') }}
+              </a>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="page-body">
   <div class="container-xl">
     <div class="row row-cards">
       <div class="col-md-12">
 
-        <form autocomplete="off" class="card"  action="{{ url('admin/courses/$course_id/levels' ) }}" method="post" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.levels.store') }}">
           @csrf
 
+          <div class="card">
+            <div class="card-body">
 
-          <div class="card-body">
-            <div class="row ">
-            <div class="mb-3">
-                  <label class="form-label" for="name"> {{ __('admin.levels.name') }} <span>*</span></label>
-                  <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" required>
-
-                  @error('name')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                  @enderror
-                </div>
-              <div class="col-md-6">
+              {{-- Level Name Arabic --}}
               <div class="mb-3">
-                  <label class="form-label" for="track_id">{{ __('admin.courses.track') }} <span>*</span></label>
-                  <select class="select2 form-control" name="track_id" id="track_id" required>
-                    <option value="">{{ __('select') }}</option>
-                    @foreach($course->tracks as $track)
-                    <option value="{{ $track->id }}"> {{ $track->name }}</option>
-
-                    @endforeach
-                  </select>
-
-                  @error('track_id')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                  @enderror
-                </div>
-                <div class="mb-3">
-                  <label class="form-label" for="period_type">{{ __('admin.levels.period_type') }} <span>*</span></label>
-                  <select class="form-control" name="period_type" id="period_type" required>
-                    <option value="">{{ __('select') }}</option>
-                    <option value="1"> {{ __('admin.levels.day') }}</option>
-                    <option value="2"> {{ __('admin.levels.hour') }}</option>
-                  </select>
-
-                  @error('period_type')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                  @enderror
-                </div>
-
-                <div class="mb-3">
-                  <label class="form-label" for="period"> {{ __('admin.levels.period') }} <span>*</span></label>
-                  <input type="number" class="form-control" name="period" id="period" value="{{ old('name') }}" required>
-
-                  @error('period')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                  @enderror
-                </div>
-
-
-
-                
-
-
-
-              </div>
-              <div class="col-md-6">
-
-              <div class="mb-3">
-                  <label class="form-label" for="instructor_id">{{ __('admin.courses.instructor') }} <span>*</span></label>
-                  <select class="select2 form-control" name="instructor_id" id="instructor_id">
-                    <option value="">{{ __('select') }}</option>
-                    @foreach($course->instructors as $instructor)
-                    <option value="{{ $instructor->id }}"> {{ $instructor->name }}</option>
-
-                    @endforeach
-                  </select>
-
-                  @error('instructor_id')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                  @enderror
-                </div>
-
-             
-
-                <div class="mb-3">
-                  <label class="form-label" for="start_date">{{ __('admin.levels.start_date') }} <span>*</span></label>
-                  <input type="date" class="form-control" name="start_date" id="start_date" value="{{ old('start_date') }}">
-
-                  @error('start_date')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                  @enderror
-                </div>
-
-                <div class="mb-3">
-                  <label class="form-label" for="end_date">{{ __('admin.levels.end_date') }} <span>*</span></label>
-                  <input type="date" class="form-control" name="end_date" id="end_date" value="{{ old('end_date') }}">
-
-                  @error('end_date')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                  @enderror
-                </div>
-
-                <input type="hidden" name="course_id" value="{{$course->id}}">
-
-
-
-
-
-
+                <label class="form-label" for="name_ar">
+                  {{ __('admin.name_ar') }} <span class="text-danger">*</span>
+                </label>
+                <input type="text" name="name_ar" id="name_ar" class="form-control" value="{{ old('name_ar') }}" required>
+                @error('name_ar')
+                  <div class="text-danger small mt-1">{{ $message }}</div>
+                @enderror
               </div>
 
+              {{-- Level Name English --}}
+              <div class="mb-3">
+                <label class="form-label" for="name_en">
+                  {{ __('admin.name_en') }} <span class="text-danger">*</span>
+                </label>
+                <input type="text" name="name_en" id="name_en" class="form-control" value="{{ old('name_en') }}" required>
+                @error('name_en')
+                  <div class="text-danger small mt-1">{{ $message }}</div>
+                @enderror
+              </div>
 
-
+              {{-- Country Selection --}}
+              <div class="mb-3">
+                <label class="form-label" for="country_id">
+                  {{ __('admin.country') }} <span class="text-danger">*</span>
+                </label>
+                <select name="country_id" id="country_id" class="form-control" required>
+                  <option value="">{{ __('select') }}</option>
+                  @foreach($countries as $country)
+                    <option value="{{ $country->id }}" {{ old('country_id') == $country->id ? 'selected' : '' }}>
+                      {{ $country->name }}
+                    </option>
+                  @endforeach
+                </select>
+                @error('country_id')
+                  <div class="text-danger small mt-1">{{ $message }}</div>
+                @enderror
+              </div>
 
             </div>
-          </div>
-          <div class="card-footer text-end">
-            <div class="d-flex">
-              <button type="submit" class="btn btn-success">{{ __('admin.btn_save') }}</button>
+
+            <div class="card-footer text-end">
+              <button type="submit" class="btn btn-success">
+                <i class="ti ti-device-floppy me-1"></i> {{ __('admin.save') }}
+              </button>
             </div>
           </div>
-
-          <!-- Form End -->
-
-
         </form>
+
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
 @endsection

@@ -1,6 +1,8 @@
 <?php
 
 return [
+        'view_details' =>'Show',
+
     'message_sent_successfully' => 'Message has been sent successfullywe ',
 
     'get_in_touch' => 'Get in touch',
@@ -9,11 +11,16 @@ return [
     'click_to_download' => 'Click To download',
     'home' => 'Home',
     'view' => 'View',
+    'about_us' => 'About us',
     'readmore' => 'Read More',
+    'readless' => 'Read Less',
     'appname' => 'SGP',
     'where' => 'Where We Work',
     'areawork' => 'Areas of Work',
     'resources' => 'Resources',
+    'history' => 'Our History',
+    'goals' => 'Our Goals',
+    'missions' => 'Our Mission',
     'vid' => 'SGP Videos',
     'contact' => 'Contact us',
     'downloadcenter' => 'Download Center',

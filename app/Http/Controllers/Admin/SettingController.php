@@ -60,7 +60,7 @@ class SettingController extends Controller
      */
     public function siteInfo(Request $request)
     {
-       
+
         $data = Setting::where('id', 1)->first();
         if (!$data)
             $data = new Setting();
@@ -162,13 +162,13 @@ class SettingController extends Controller
         $data->parteners = $request->parteners ? 1 : 0;
         $data->student_opinion = $request->student_opinion ? 1 : 0;
         $data->map_locations = $request->map_locations ? 1 : 0;
-        $data->achievements = $request->achievements ? 1: 0;
-        $data->letter_news = $request->letter_news ? 1: 0;
+        $data->achievements = $request->achievements ? 1 : 0;
+        $data->letter_news = $request->letter_news ? 1 : 0;
         $data->book_shop_url = $request->book_shop_url;
         $data->question_list = $request->question_list ? 1 : 0;
         $data->book_store_visiable = $request->book_store_visiable ? 1 : 0;
 
-        
+
 
 
         $data->save();
@@ -246,67 +246,39 @@ class SettingController extends Controller
 
     public function saveAboutSetting(Request $request)
     {
+
         $data = AboutSetting::first();
-        if (!$data)
+        if (!$data) {
             $data = new AboutSetting();
-
-        $data->update($request->except([
-            'background_image', 'mission_image', 'msg_image1',
-            'msg_image2', 'msg_image3', 'msg_image4'
-        ]));
-        if ($request->hasFile('background_image')) {
-
-            $thumbnail = $request->background_image;
-            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->move(public_path('/uploads/settings/'), $filename);
-            $data->background_image = 'uploads/settings/' . $filename;
-            $data->save();
         }
 
-        if ($request->hasFile('mission_image')) {
+        // List of sections
+        $sections = ['about', 'mission', 'goals', 'history'];
 
-            $thumbnail = $request->mission_image;
-            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->move(public_path('/uploads/settings/'), $filename);
-            $data->mission_image = 'uploads/settings/' . $filename;
-            $data->save();
-        }
-        if ($request->hasFile('msg_image1')) {
+        foreach ($sections as $section) {
+            // Save text fields
+            $data->{"{$section}_title_ar"} = $request->input("{$section}_title_ar");
+            $data->{"{$section}_title_en"} = $request->input("{$section}_title_en");
+            $data->{"{$section}_description_ar"} = $request->input("{$section}_description_ar");
+            $data->{"{$section}_description_en"} = $request->input("{$section}_description_en");
 
-            $thumbnail = $request->msg_image1;
-            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->move(public_path('/uploads/settings/'), $filename);
-            $data->msg_image1 = 'uploads/settings/' . $filename;
-            $data->save();
-        }
-        if ($request->hasFile('msg_image2')) {
-
-            $thumbnail = $request->msg_image2;
-            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->move(public_path('/uploads/settings/'), $filename);
-            $data->msg_image2 = 'uploads/settings/' . $filename;
-            $data->save();
+            // Save image if uploaded
+            if ($request->hasFile("{$section}_image")) {
+                $file = $request->file("{$section}_image");
+                $filename = $section . '_' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('uploads/settings/'), $filename);
+                $data->{"{$section}_image"} = 'uploads/settings/' . $filename;
+            }
         }
 
-        if ($request->hasFile('msg_image3')) {
 
-            $thumbnail = $request->msg_image3;
-            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->move(public_path('/uploads/settings/'), $filename);
-            $data->msg_image3 = 'uploads/settings/' . $filename;
-            $data->save();
-        }
-        if ($request->hasFile('msg_image4')) {
+        $data->save();
 
-            $thumbnail = $request->msg_image4;
-            $filename = time() . '.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->move(public_path('/uploads/settings/'), $filename);
-            $data->msg_image4 = 'uploads/settings/' . $filename;
-            $data->save();
-        }
         Toastr::success(__('admin.msg_updated_successfully'), __('admin.msg_success'));
         return redirect()->back();
     }
+
+
 
     public function mailSettings()
     {
@@ -319,12 +291,11 @@ class SettingController extends Controller
     public function SaveMailSetting(Request $request)
     {
         $data = MailSetting::first();
-        if($data == null) 
-        $data = new MailSetting();
+        if ($data == null)
+            $data = new MailSetting();
         $data->update($request->all());
         Toastr::success(__('admin.msg_updated_successfully'), __('admin.msg_success'));
         return redirect()->back();
-
     }
 
 
@@ -339,11 +310,10 @@ class SettingController extends Controller
     public function SaveZoomSetting(Request $request)
     {
         $data = ZoomSetting::first();
-        if($data == null) 
-        $data = new ZoomSetting();
+        if ($data == null)
+            $data = new ZoomSetting();
         $data->update($request->all());
         Toastr::success(__('admin.msg_updated_successfully'), __('admin.msg_success'));
         return redirect()->back();
     }
-
 }

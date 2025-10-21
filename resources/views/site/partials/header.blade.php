@@ -2,9 +2,7 @@
   /* === GLOBAL COLORS === */
   :root {
     --brand-blue: #0056A3;
-    /* Main blue tone from logo */
     --brand-blue-light: #E8F1FA;
-    /* Light blue for hover/submenu */
     --text-dark: #1a1a1a;
     --navbar-bg: #ffffff;
   }
@@ -22,16 +20,15 @@
     transition: all 0.3s ease;
     height: 80px;
     backdrop-filter: none !important;
-    /* remove blur */
-    -webkit-backdrop-filter: none !important;
   }
 
-  /* Header row alignment */
+  /* Header layout */
   #header .header-row {
-    height: 80px;
     display: flex;
     align-items: center;
-    transition: height 0.3s ease;
+    justify-content: space-between;
+    height: 80px;
+    gap: 20px;
   }
 
   /* === SHRINK ON SCROLL === */
@@ -39,12 +36,48 @@
     height: 65px;
     background: var(--navbar-bg);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    backdrop-filter: none !important;
   }
 
   /* Keep content from hiding under fixed header */
   body {
     padding-top: 80px;
+  }
+
+  /* === LOGO AREA === */
+  #logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #logo img {
+    height: 55px;
+    width: auto;
+    transition: all 0.3s ease;
+  }
+
+  body.scrolled #logo img {
+    height: 45px;
+  }
+
+  /* === PARTNER LOGOS === */
+  .header-misc {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-misc img {
+    height: 40px;
+    width: auto;
+    transition: all 0.3s ease;
+  }
+
+  body.scrolled .header-misc img {
+    height: 35px;
   }
 
   /* === MAIN MENU === */
@@ -56,9 +89,10 @@
     transition: color 0.3s ease;
     font-size: 15px;
     text-decoration: none;
+    display: flex;
+    align-items: center;
   }
 
-  /* Hover underline animation */
   .primary-menu>.menu-item>.menu-link::after {
     content: '';
     position: absolute;
@@ -71,7 +105,6 @@
     transition: width 0.3s ease;
   }
 
-  /* Hover color */
   .primary-menu>.menu-item>.menu-link:hover {
     color: var(--brand-blue);
   }
@@ -80,7 +113,6 @@
     width: 70%;
   }
 
-  /* Active item */
   .primary-menu>.menu-item.current>.menu-link {
     color: var(--brand-blue);
   }
@@ -98,24 +130,18 @@
     z-index: 999;
   }
 
-  /* Show submenu on hover */
   .primary-menu .menu-item:hover>.sub-menu-container {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
 
-  /* Submenu links */
   .sub-menu-container .menu-link {
     color: var(--text-dark);
     padding: 8px 20px;
     display: block;
     font-size: 14px;
     transition: all 0.25s ease;
-  }
-
-  .sub-menu-container .menu-link::after {
-    display: none;
   }
 
   .sub-menu-container .menu-link:hover {
@@ -125,46 +151,107 @@
     border-radius: 4px;
   }
 
-  /* === LOGO SIZING & ALIGNMENT === */
-  #logo {
-    display: flex;
-    align-items: center;
-    height: 100%;
+  /* === RTL FIXES === */
+  html[lang="ar"] #header .header-row {
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 20px;
   }
 
-  #logo img {
-    height: 55px;
-    /* fits well in 80px header */
-    width: auto;
-    transition: all 0.3s ease;
+  html[lang="ar"] #logo {
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: right !important;
+    direction: rtl !important;
   }
 
-  /* When header shrinks on scroll */
-  body.scrolled #logo img {
-    height: 45px;
-    /* smaller logo when scrolled */
+  html[lang="ar"] .header-misc {
+    margin: 0 !important;
   }
 
-  /* Adjust for retina / secondary logos if present */
-  #header .retina-logo img {
-    height: 55px;
-    width: auto;
-  }
+  /* === MOBILE HEADER FIXES === */
+  @media (max-width: 991px) {
 
-  body.scrolled #header .retina-logo img {
-    height: 45px;
-  }
+    #header.full-header {
+      height: auto;
+      padding: 10px 0;
+    }
 
-  /* Make sure header-misc logos (like UNDP, GEF) fit too */
-  .header-misc img {
-    height: 40px;
-    width: auto;
-    margin-left: 10px;
-    transition: all 0.3s ease;
-  }
+    #header .header-row {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      height: auto;
+      gap: 10px;
+    }
 
-  body.scrolled .header-misc img {
-    height: 35px;
+    /* Hamburger icon */
+    #primary-menu-trigger {
+      display: block !important;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    .svg-trigger path {
+      stroke: var(--brand-blue);
+      stroke-width: 5;
+      fill: none;
+      stroke-linecap: round;
+    }
+
+    /* Hide menu initially */
+    .primary-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--navbar-bg);
+      width: 100%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      margin-top: 10px;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    /* Show on active */
+    .primary-menu.active {
+      display: flex;
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    /* Mobile links */
+    .primary-menu .menu-link {
+      padding: 14px 20px;
+      border-bottom: 1px solid #eee;
+      justify-content: flex-start;
+    }
+
+    .primary-menu .menu-link:hover {
+      background: var(--brand-blue-light);
+      color: var(--brand-blue);
+    }
+
+    /* Submenu */
+    .sub-menu-container {
+      position: static !important;
+      box-shadow: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      padding-left: 20px;
+    }
+
+    html[lang="ar"] .primary-menu .menu-link {
+      text-align: right;
+    }
+
+    #logo img,
+    .header-misc img {
+      max-height: 45px;
+    }
   }
 </style>
 
@@ -174,16 +261,17 @@
       <div class="header-row">
 
         <div id="logo">
-          <a href="/" class="standard-logo"><img src="{{ asset($setting->logoFullPath ) }}" alt=" Logo"></a>
-          <!-- <a href="/" class="retina-logo"><img src="{{ asset('public/storage/' . config('settings.site_logo')) }}" alt=" Logo"></a> -->
+          <a href="/" class="standard-logo">
+            <img src="{{ asset($setting->logoFullPath) }}" alt="Logo">
+          </a>
         </div>
-        <div class="header-misc" id="">
 
-
-          <a href="/" class="standard-logo"><img src="{{ asset('public/images/logos/undp.png') }}" alt=" Logo"></a>
-
-          <a href="/" class="standard-logo"><img src="{{ asset('public/images/logos/gef.png') }}" alt=" Logo"></a>
+        <div class="header-misc">
+          <a href="/" class="standard-logo">
+            <img src="{{ asset('public/images/logos/gef.png') }}" alt="Logo">
+          </a>
         </div>
+
         <div id="primary-menu-trigger">
           <svg class="svg-trigger" viewBox="0 0 100 100">
             <path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
@@ -197,181 +285,23 @@
       </div>
     </div>
   </div>
-  <div class="header-wrap-clone"></div>
 </header>
 
-<style>
-  /* === RTL FIXES === */
-  html[lang="ar"] #header .header-row {
-    flex-direction: row-reverse !important;
-    justify-content: space-between !important;
-  }
-
-  html[lang="ar"] #logo {
-    margin-inline-start: auto !important;
-    margin-inline-end: 0 !important;
-    text-align: right !important;
-  }
-
-  html[lang="ar"] .header-misc {
-    margin-inline-start: 0 !important;
-    margin-inline-end: auto !important;
-  }
-
-  html[lang="ar"] #primary-menu {
-    margin-inline-end: 0 !important;
-    margin-inline-start: auto !important;
-  }
-
-  /* Prevent logo and partner logos from overlapping */
-  #logo a,
-  .header-misc a {
-    display: inline-block;
-    margin: 0 5px;
-    vertical-align: middle;
-  }
-
-  /* Keep consistent sizing */
-  #logo img,
-  .header-misc img {
-    max-height: 55px;
-    height: auto;
-    width: auto;
-    object-fit: contain;
-  }
-
-  /* === ARABIC HEADER LOGO FIX === */
-  html[lang="ar"] #logo {
-    display: block !important;
-    text-align: right !important;
-    direction: rtl !important;
-  }
-
-  html[lang="ar"] #logo .standard-logo,
-  html[lang="ar"] #logo .retina-logo {
-    float: left !important;
-    /* ✅ forces the image to the left side */
-  }
-
-  html[lang="ar"] #logo img {
-    display: inline-block !important;
-    max-width: 150px;
-    height: auto;
-  }
-</style>
-
-
-<!-- /header -->
-
-
-
 <script>
-  document.addEventListener('scroll', function() {
-    if (window.scrollY > 4) {
-      document.body.classList.add('scrolled');
-    } else {
-      document.body.classList.remove('scrolled');
+  // Shrink header on scroll
+  document.addEventListener('scroll', function () {
+    document.body.classList.toggle('scrolled', window.scrollY > 4);
+  });
+
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', function () {
+    const trigger = document.querySelector('#primary-menu-trigger');
+    const menu = document.querySelector('.primary-menu');
+
+    if (trigger && menu) {
+      trigger.addEventListener('click', function () {
+        menu.classList.toggle('active');
+      });
     }
   });
 </script>
-<style>
-  /* === FIX HEADER HEIGHT JUMP === */
-
-  /* Remove any auto height cloning effect from Canvas or theme */
-  .header-wrap-clone {
-    display: none !important;
-    /* disables placeholder clone that causes gap */
-  }
-
-  /* Ensure header stays consistent in height */
-  #header.full-header,
-  body.scrolled #header.full-header {
-    transition: all 0.3s ease;
-    overflow: hidden;
-  }
-
-  /* Fix content offset (since we removed clone) */
-  body {
-    padding-top: 80px;
-    /* same as initial header height */
-  }
-
-  /* Optional smoother transition for the logo */
-  #logo img,
-  .header-misc img {
-    transition: height 0.25s ease, transform 0.25s ease;
-  }
-
-  body.scrolled #header.full-header {
-    height: 80px;
-  }
-
-  body.scrolled #logo img {
-    transform: scale(0.9);
-  }
-
-  /* === BASE HEADER STYLE === */
-  #header.full-header {
-    background-color: transparent;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  /* When page scrolls even 1px, header becomes white */
-  body.scrolled #header.full-header {
-    background-color: #ffffff !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  }
-
-  /* === NAVIGATION COLORS === */
-  #header.full-header #primary-menu>ul>li>a {
-    color: #004b87;
-    /* main blue like logo */
-    transition: color 0.3s ease, border-color 0.3s ease;
-  }
-
-  /* Hover + Active underline */
-  #header.full-header #primary-menu>ul>li>a:hover,
-  #header.full-header #primary-menu>ul>li.current>a {
-    color: #004b87;
-    border-bottom: 2px solid #00a86b;
-    /* soft green accent under hover */
-  }
-
-  /* Submenu style (consistent, no orange, no underline) */
-  #header.full-header #primary-menu ul ul {
-    background-color: #ffffff;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  #header.full-header #primary-menu ul ul li a {
-    color: #004b87;
-    transition: all 0.2s ease;
-  }
-
-  #header.full-header #primary-menu ul ul li a:hover {
-    background-color: #f5f8fa;
-    transform: translateY(-2px);
-    color: #00a86b;
-    /* subtle hover tint */
-  }
-
-  /* === FIX HEADER HEIGHT JUMP === */
-  .header-wrap-clone {
-    display: none !important;
-  }
-
-  body {
-    padding-top: 80px;
-  }
-
-  #logo {
-    direction: ltr !important;
-    unicode-bidi: isolate !important;
-    text-align: left !important;
-    margin-inline-start: 0 !important;
-    margin-inline-end: auto !important;
-    padding-inline-start: 0 !important;
-    padding-inline-end: 0 !important;
-  }
-</style>

@@ -9,11 +9,11 @@
 </title>
 <link rel="shortcut icon" href="{{ asset($setting->iconFullPath) }}">
 
-<link href="{{asset('dist/css/tabler.min.css?1692870487')}}" rel="stylesheet" />
-<link href="{{asset('dist/css/tabler-flags.min.css?1692870487')}}" rel="stylesheet" />
-<link href="{{asset('dist/css/tabler-payments.min.css?1692870487')}}" rel="stylesheet" />
-<link href="{{asset('dist/css/tabler-vendors.min.css?1692870487')}}" rel="stylesheet" />
-<link href="{{asset('dist/css/demo.min.css?1692870487')}}" rel="stylesheet" />
+<link href="{{asset('public/dist/css/tabler.min.css?1692870487')}}" rel="stylesheet" />
+<link href="{{asset('public/dist/css/tabler-flags.min.css?1692870487')}}" rel="stylesheet" />
+<link href="{{asset('public/dist/css/tabler-payments.min.css?1692870487')}}" rel="stylesheet" />
+<link href="{{asset('public/dist/css/tabler-vendors.min.css?1692870487')}}" rel="stylesheet" />
+<link href="{{asset('public/dist/css/demo.min.css?1692870487')}}" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 <!-- fontawesome icon -->

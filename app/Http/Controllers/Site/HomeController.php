@@ -5,17 +5,16 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\Collection;
+use App\Models\AboutSetting;
 use App\Models\Category;
 use App\Models\Cms;
 use Newsletter;
 use Mail;
 use App\Mail\SendEmail;
-use App\Mail\SendEmailHR;
 use App\Models\Blog;
 use App\Models\Faq;
-
-
+use App\Models\Level;
+use App\Models\Project;
 use Illuminate\Support\Arr;
 
 class HomeController extends Controller
@@ -26,20 +25,8 @@ class HomeController extends Controller
     {
 
         // Common queries
-        $history = Cms::where('mission', 1)->where('published', 1)->first();
-        $objs    = Cms::where('vision', 1)->where('published', 1)->first();
-        $shs     = Cms::where('company', 1)->where('published', 1)->first();
-        $vedios  = Cms::where('adv', 1)->where('published', 1)->orderBy('order_no')->get();
-        $news    = Cms::where('news', 1)->where('published', 1)->orderBy('created_at', 'desc')->get();
 
-
-        return view('site.pages.homepage2', compact(
-            'history',
-            'objs',
-            'shs',
-            'vedios',
-            'news'
-        ));
+        return view('site.pages.homepage2');
     }
 
 
@@ -52,7 +39,7 @@ class HomeController extends Controller
     public function projects()
     {
 
-        $projects = Product::where('status', 1)->get();
+        $projects = Project::where('active', 1)->get();
         return view('site.pages.projects', compact('projects'));
     }
     public function project($slug,)
@@ -91,16 +78,16 @@ class HomeController extends Controller
         return view('site.pages.events', compact('events'));
     }
 
-     public function event($id)
- {
-     $row = Blog::find($id);
-     return view('site.pages.page', compact('row'));
- }
+    public function event($id)
+    {
+        $row = Blog::find($id);
+        return view('site.pages.page', compact('row'));
+    }
 
     public function whereWork()
     {
 
-        $states = \App\models\State::where('ship', 1)->get();
+        $states = Level::all();
 
         return view('site.pages.wherework', compact('states'));
     }
@@ -261,5 +248,24 @@ class HomeController extends Controller
         $sitmail =  config('settings.contact_email');
         Mail::to($sitmail)->send(new SendEmail($name, $email, $phone, $message, $company, $serial, $subject));
         return ("Message Sent Succsessfuly");
+    }
+
+
+    public function missionDetails()
+    {
+        $row = AboutSetting::first();
+        return view('site.pages.mission', compact('row'));
+    }
+
+    public function goalsDetails()
+    {
+        $row = AboutSetting::first();
+        return view('site.pages.goals', compact('row'));
+    }
+
+    public function historyDetails()
+    {
+        $row = AboutSetting::first();
+        return view('site.pages.history', compact('row'));
     }
 }

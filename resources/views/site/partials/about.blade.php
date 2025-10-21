@@ -1,10 +1,10 @@
 <!-- ABOUT SECTION -->
 <section id="about-section" class="py-5" style="background: linear-gradient(135deg, #005aac 0%, #00b66d 100%); color: #fff;">
   <div class="container text-center">
-    <h2 class="fw-bold mb-3">{{ $about->title }}</h2>
+    <h2 class="fw-bold mb-3">{{ $about->aboutTitle }}</h2>
     <div class="mx-auto mb-4" style="width:60px;height:3px;background:#fff;border-radius:2px;"></div>
     <p class="lead mx-auto" style="max-width:800px; line-height:1.6;" id="about-text">
-      {!! \Illuminate\Support\Str::limit(strip_tags($about->description), 300) !!}
+      {!! \Illuminate\Support\Str::limit(strip_tags($about->aboutDescription), 300) !!}
     </p>
     <button class="btn btn-outline-light btn-sm rounded-pill mt-2" id="toggle-about">
                  {{ __('site.readmore') }}
@@ -22,9 +22,9 @@
       <div class="col-lg-4 col-md-6">
         <div class="info-box h-100 p-4 text-white" style="background: linear-gradient(135deg, #82bc41 0%, #a8d08d 100%); border-radius:12px; position:relative; overflow:hidden;">
           <i class="icon-bulb" style="font-size:40px; opacity:0.2; position:absolute; right:20px; top:20px;"></i>
-          <h4 class="fw-bold mb-3">{{ $history->LocalName }}</h4>
-          <p>{{ \Illuminate\Support\Str::limit(strip_tags($history->description), 180) }}</p>
-          <a href="{{ url('page/'. $history->slug) }}" class="btn btn-light btn-sm rounded-pill fw-bold text-uppercase mt-2">
+          <h4 class="fw-bold mb-3">{{ $about->goalsTitle }}</h4>
+          <p>{{ \Illuminate\Support\Str::limit(strip_tags($about->goalsDescription), 180) }}</p>
+          <a href="{{ url('goals-details') }}" class="btn btn-light btn-sm rounded-pill fw-bold text-uppercase mt-2">
             {{ __('site.readmore') }}
           </a>
         </div>
@@ -34,21 +34,21 @@
       <div class="col-lg-4 col-md-6">
         <div class="info-box h-100 p-4 text-white" style="background: linear-gradient(135deg, #f7a81b 0%, #ffd966 100%); border-radius:12px; position:relative; overflow:hidden;">
           <i class="icon-cog" style="font-size:40px; opacity:0.2; position:absolute; right:20px; top:20px;"></i>
-          <h4 class="fw-bold mb-3">{{ $objs->LocalName }}</h4>
-          <p>{{ \Illuminate\Support\Str::limit(strip_tags($objs->description), 180) }}</p>
-          <a href="{{ url('/page/'.$objs->slug) }}" class="btn btn-light btn-sm rounded-pill fw-bold text-uppercase mt-2">
+          <h4 class="fw-bold mb-3">{{ $about->missionTitle }}</h4>
+          <p>{{ \Illuminate\Support\Str::limit(strip_tags($about->missionDescription), 180) }}</p>
+          <a href="{{ url('/mission-details') }}" class="btn btn-light btn-sm rounded-pill fw-bold text-uppercase mt-2">
             {{ __('site.readmore') }}
           </a>
         </div>
       </div>
 
-      <!-- Box 3: History -->
+      <!-- Box 3: about -->
       <div class="col-lg-4 col-md-12">
         <div class="info-box h-100 p-4 text-white" style="background: linear-gradient(135deg, #005aac 0%, #3380cc 100%); border-radius:12px; position:relative; overflow:hidden;">
           <i class="icon-thumbs-up" style="font-size:40px; opacity:0.2; position:absolute; right:20px; top:20px;"></i>
-          <h4 class="fw-bold mb-3">{{ $shs->LocalName }}</h4>
-          <p>{{ \Illuminate\Support\Str::limit(strip_tags($shs->description), 180) }}</p>
-          <a href="{{ url('page/'.$shs->slug ) }} " class="btn btn-light btn-sm rounded-pill fw-bold text-uppercase mt-2">
+          <h4 class="fw-bold mb-3">{{ $about->historyTitle }}</h4>
+          <p>{{ \Illuminate\Support\Str::limit(strip_tags($about->historyDescription), 180) }}</p>
+          <a href="{{ url('history-details' ) }} " class="btn btn-light btn-sm rounded-pill fw-bold text-uppercase mt-2">
             {{ __('site.readmore') }}
           </a>
         </div>

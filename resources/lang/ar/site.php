@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'readless' =>'أقرا اقل',
+    'view_details' =>'عرض التفاصيل',
     'message_sent_successfully' =>'تم إرسال الرسالة بنجاح',
     'get_in_touch' =>'تواصل معنا',
     'about_us' =>'من نحن',
@@ -9,9 +9,13 @@ return [
     'home' => 'الرئيسية',
     'view' => 'عرض',
     'readmore' => 'اقرأ المزيد',
+    'readless' =>'إقرأ أقل',
     'appname' => 'نحن',
     'where' => 'أين نعمل',
     'areawork' => 'مجالات العمل',
+    'history' =>'تاريخنا',
+    'goals' =>'أهدافنا',
+    'missions'=>'مهمتنا',
     'resources' => 'المصادر',
     'vid' => 'فيديوهات',
     'contact' => 'اتصل بنا',

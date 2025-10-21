@@ -3,9 +3,9 @@ return [
     "Home" => "الرئيسية",
     'user_managment' => " المستخدمين والصلاحيات",
     'add_user' => "إضافة مستخدم",
-    "countries" => "الدول",
-    'list_countries' => 'عرض الدول',
-    'add_countries' => 'إضافة دولة',
+    "countries" => "المحافظات",
+    'list_countries' => 'عرض المحافظات',
+    'add_countries' => 'إضافة محافظة',
     "paymenttypes" => "وسائل الدفع ",
     "master_data"  => "الإعدادت",
     'students' => [
@@ -13,14 +13,30 @@ return [
         "list" => "قائمة الطلاب",
         "add"   => "إضافة طالب"
     ],
-    'payment-types'=>[
-       "list" => "عرض وسائل الدفع",
+    'payment-types' => [
+        "list" => "عرض وسائل الدفع",
         "add"   => "إضافة وسيلة الدفع",
-        'edit' => 'تحديث وسيلة الدفع' 
+        'edit' => 'تحديث وسيلة الدفع'
     ],
     'users' => [
         "list" => " المستخدمين",
         "add"   => "إضافة مستخدم"
+    ],
+    'fields' => [
+        "list" => " مجالات العمل",
+        "add"   => "إضافة مجال جديد"
+    ],
+    'projects' => [
+        "list" => "المشاريع",
+        "add"   => "إضافة مشروع جديد"
+    ],
+
+    'levels' => [
+        "list" => "  مراحل العمل",
+        "add"   => "إضافة lvpgm جديد"
+    ],
+    'projects' => [
+        'title' => 'إدارة المشاريع ومجالات العمل'
     ],
     'roles' => [
         "list" => "الأدوار",
@@ -55,13 +71,13 @@ return [
         'course_name' => 'إسم الدورة',
         'track_name' => 'إسم المسار',
         'platform_certification' => 'شهادات منصة دوافير',
-        'student_platform_certification' => 'شهادتى من المنصة',     
-           'externel_certification' => 'شهادات الطلاب من جهات خارجية',
+        'student_platform_certification' => 'شهادتى من المنصة',
+        'externel_certification' => 'شهادات الطلاب من جهات خارجية',
         'add' => 'منح شهادة لطالب',
-        'granting'=> 'منح شهادة لطالب',
+        'granting' => 'منح شهادة لطالب',
         'student_externel_certification' => 'شهاداتي من جهات خارجية',
         'add_student_certification' => 'إضافة شهادة',
-        'add_certificate'=>'إضافة نموذج شهادة'
+        'add_certificate' => 'إضافة نموذج شهادة'
     ],
     'tickets' => [
         "tickets_management"  => " الدعم",
@@ -83,10 +99,10 @@ return [
         'date' => 'تاريخ ووقت الإرسال',
         'action' => 'الحدث',
         'create' => 'اضافة'
-        
-        
+
+
     ],
-    'calculate_equation' =>[
+    'calculate_equation' => [
         'management' => 'حساب المعادلة',
         'first_secondary_subjects' => 'قائمة مواد الأول الثانوى',
         'second_secondary_subjects' => 'قائمة مواد الثانى الثانوى',
@@ -95,62 +111,68 @@ return [
         'list_of_colleges' => 'قائمة الكليات',
 
     ],
-    'blogs' =>[
+    'blogs' => [
         'blogs_management' => 'الأحداث',
         'list' => 'عرض الأحداث',
         'add' => 'إضافة حدث'
     ],
 
-     'banners' =>[
-     'banners_management' => 'الاعلانات',
-     'list' => 'عرض الاعلانات',
-     'add' => 'إضافة اعلان'
- ],
+    'news' => [
+    'blogs_management' => 'الاخبار',
+    'list' => 'عرض الاخبار',
+    'add' => 'إضافة خبر'
+],
 
-    'certificates' =>[
-        'certificates_management' =>'الشهادات المعتمدة',
+    'banners' => [
+        'banners_management' => 'الاعلانات',
+        'list' => 'عرض الاعلانات',
+        'add' => 'إضافة اعلان'
+    ],
+
+    'certificates' => [
+        'certificates_management' => 'الشهادات المعتمدة',
         'list' => 'عرض الشهادات',
         'add' => 'إضافة ',
         'edit' => ' تعديل'
     ],
-    'certificatesabbreviations'=>[
-        'certificatesabbreviations_management' =>'الشهادات الدولية',
-        'list' => ' عرض الشهادات الدولية ', 
+    'certificatesabbreviations' => [
+        'certificatesabbreviations_management' => 'الشهادات الدولية',
+        'list' => ' عرض الشهادات الدولية ',
         'add' => ' إضافة شهادة دولية ',
         'edit' => ' تعديل شهادة دولية'
     ],
 
-    'downloads' =>[
-        'downloads_management' =>' التحميلات',
+    'downloads' => [
+        'downloads_management' => ' التحميلات',
         'list' => 'عرض التحميلات',
         'add' => 'إضافة ',
         'edit' => ' تعديل'
     ],
 
-    
-    'videos' =>[
-        'videos_management' =>' الفيديوها',
+
+    'videos' => [
+        'videos_management' => ' الفيديوها',
         'list' => 'عرض الفيديوهات',
         'add' => 'إضافة ',
         'edit' => ' تعديل'
     ],
 
 
-    'contacts' =>[
+    'contacts' => [
 
-        'list' =>'عرض رسائل التواصل',
-        'title' =>'المراسلات',
+        'list' => 'عرض رسائل التواصل',
+        'title' => 'المراسلات',
     ],
 
-     'faq' =>[
-     'faq_management' =>' الأسئلة الشائعة',
-     'list' => 'عرض الأسئلة',
-     'add' => 'إضافة ',
-     'edit' => ' تعديل'
- ],
+    'faq' => [
+        'faq_management' => ' الأسئلة الشائعة',
+        'list' => 'عرض الأسئلة',
+        'add' => 'إضافة ',
+        'edit' => ' تعديل'
+    ],
     "courses" => [
-        'list_sections' =>'عرض الأقسام',
-        'add_section' =>'إضافة قسم',
+        'list_sections' => 'عرض الأقسام',
+        'add_section' => 'إضافة قسم',
         'start_soon_courses' => 'دورات تبدا قريبا',
         'edit_course' => 'تعديل بيانات الدورة',
         'all_courses' => 'كل الدورات',
@@ -176,15 +198,15 @@ return [
     ],
     'settings' => [
         'general_settings' => 'إعدادت عامة ',
-        'policies' => 'السياسات',  
-        'add_policies' => 'إضافة سياية جديدة',  
+        'policies' => 'السياسات',
+        'add_policies' => 'إضافة سياية جديدة',
         'add_reviews' => 'إضافة تعليق',
         'languages' => 'اللغات',
         'add_languages' => 'إضافة لغة',
         'mail_settings' => 'إعدادت البريد الإلكترونى',
 
         'about_us_settings' => 'من نحن',
-        'questions' =>'الأسئلة المتكررة',
+        'questions' => 'الأسئلة المتكررة',
         'add_faq_questions' => 'إضافة سؤال',
         'teams' => 'فريق العمل ',
         'parteners' => 'الشركاء والداعمين',
@@ -193,7 +215,7 @@ return [
         'zoom_settings' => 'اعدادات زووم',
         'home_settings' => 'اعدادات الصفحة الرئيسية',
         'contactus_settings' => 'تواصل معنا',
-        'reviews' =>'تقييمات وآراء',
+        'reviews' => 'تقييمات وآراء',
         'importexport' => 'استيراد الملفات'
 
 
@@ -243,7 +265,7 @@ return [
         'add_cvmaker_template' => 'إضافة قالب'
 
     ],
-    'instructors_side'=>[
+    'instructors_side' => [
         'Home' => 'الرئيسية',
         'profile' => 'ملفى الشخصى',
         'mystudents' => 'طلابي',
@@ -259,7 +281,7 @@ return [
         'edit_profit' => 'تعديل طلب سحب'
 
     ],
-    'students_side'=>[
+    'students_side' => [
         'Home' => 'الرئيسية',
         'profile' => 'ملفى الشخصى',
         'mycourses' => 'الدورات المشترك بها',
@@ -270,39 +292,39 @@ return [
         'studentTestResult' => 'نتائج الاختبارات'
 
     ],
-    'payments' =>[
+    'payments' => [
         'transactionnumber' => 'رقم العملية',
         'transcation_date' => 'تاريخ العملية',
         'course_name' => 'اسم الدورة',
         'paid_amount' => ' القيمة المدفوعة',
         'payment_attachment' => 'مرفق اثبات الدفع',
         'list' => 'سجل مدفوعات الطالب'
-  
-      ],
-     
-      'cvs' => [
+
+    ],
+
+    'cvs' => [
         'list' => 'قوالب السيرة الذاتية',
         'add' => 'إضافة قالب جديد',
         'edit' => 'تعديل قالب'
     ],
-    'bankgroups'=> [
+    'bankgroups' => [
 
         'list' => 'عرض بنوك الأسئلة',
         'title' => 'بنوك الأسئلة',
         'add'  => 'إضافة بنك أسئلة',
         'edit' => 'تعديل بنك الأسئلة'
     ],
-    'bankquestions' =>[
+    'bankquestions' => [
         'list' => 'عرض الأسئلة',
         'add'  => 'إضافة سؤال',
         'edit' => 'تحديث سؤال'
     ],
-    'quizzes' =>[
+    'quizzes' => [
         'list' => 'عرض الاختبارات',
         'add'  => 'إضافة أختبار',
         'edit' => 'تحديث اختبار'
     ],
-    'sections' =>[
+    'sections' => [
         'list' => 'عرض أقسام الاختبار',
         'add'  => 'إضافة قسم جديد',
         'edit' => 'تحديث قسم'
@@ -315,6 +337,6 @@ return [
         'third_class' => 'الصف الثالث الثانوى',
 
     ],
-    
+
 
 ];

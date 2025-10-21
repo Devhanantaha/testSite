@@ -60,10 +60,10 @@
 						<div> {{ __('site.allphases') }}</div>
 					</a>
 				</li>
-				@foreach ($phases as $phase)
+				@foreach ($levels as $phase)
 				<li class="menu-item">
-					<a class="menu-link" href="{{ url('/where-we-work/'.$phase->slug .'/') }}">
-						<div>{{ $phase->LocalName }}</div>
+					<a class="menu-link" href="{{ url('/where-we-work/'.$phase->id .'/') }}">
+						<div>{{ $phase->name }}</div>
 					</a>
 				</li>
 				@endforeach
@@ -78,13 +78,17 @@
 			<ul class="sub-menu-container">
 
 				<li class="menu-item">
+					@foreach ($fields as $field )
 					<a class="menu-link" href="t">
-						<div>test</div>
+						{{ $field->title  }}
 					</a>
+					@endforeach
+
+
 				</li>
-			
-			
-			
+
+
+
 
 
 			</ul>

@@ -92,6 +92,21 @@
       margin-right: auto
     }
   </style>
+
+  @else
+  {{-- English font styles --}}
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body, h1, h2, h3, h4, h5, h6, .menu-link, .navbar a {
+      font-family: 'Poppins', 'Montserrat', sans-serif !important;
+      letter-spacing: 0.02em;
+    }
+
+    .primary-menu, .content-wrap, #page-title {
+      direction: ltr;
+      text-align: left;
+    }
+  </style>
   @endif
   <style>
     button,

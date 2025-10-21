@@ -6,7 +6,7 @@
   <div class="container-xl">
     <div class="row g-2 align-items-center">
       <div class="col">
-        {{ Breadcrumbs::render('update-blogs', $row) }}
+        {{ Breadcrumbs::render('update-news', $row) }}
       </div>
 
       <div class="col-auto ms-auto d-print-none">
@@ -39,7 +39,7 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label class="form-label" for="title_ar">
-                  {{ __('admin.blogs.title_ar') }} <span class="text-danger">*</span>
+                  {{ __('admin.news.title_ar') }} <span class="text-danger">*</span>
                 </label>
                 <input type="text" class="form-control" name="title_ar" id="title_ar"
                   value="{{ old('title_ar', $row->title_ar) }}" required>
@@ -50,7 +50,7 @@
 
               <div class="col-md-6 mb-3">
                 <label class="form-label" for="title_en">
-                  {{ __('admin.blogs.title_en') }} <span class="text-danger">*</span>
+                  {{ __('admin.news.title_en') }} <span class="text-danger">*</span>
                 </label>
                 <input type="text" class="form-control" name="title_en" id="title_en"
                   value="{{ old('title_en', $row->title_en) }}" required>
@@ -63,7 +63,7 @@
             <!-- ======= Description Fields ======= -->
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label class="form-label" for="description_ar">{{ __('admin.blogs.description_ar') }}</label>
+                <label class="form-label" for="description_ar">{{ __('admin.news.description_ar') }}</label>
                 <textarea dir="rtl" class="form-control richtext" name="description_ar" id="description_ar" rows="5"
                   placeholder="...">{{ old('description_ar', $row->description_ar) }}</textarea>
                 @error('description_ar')
@@ -72,7 +72,7 @@
               </div>
 
               <div class="col-md-6 mb-3">
-                <label class="form-label" for="description_en">{{ __('admin.blogs.description_en') }}</label>
+                <label class="form-label" for="description_en">{{ __('admin.news.description_en') }}</label>
                 <textarea dir="ltr" class="form-control richtext" name="description_en" id="description_en" rows="5"
                   placeholder="...">{{ old('description_en', $row->description_en) }}</textarea>
                 @error('description_en')
@@ -85,7 +85,7 @@
 
             <!-- ======= Image Upload ======= -->
             <div class="mb-3">
-              <label class="form-label" for="main_image">{{ __('admin.blogs.field_photo') }}</label>
+              <label class="form-label" for="main_image">{{ __('admin.news.field_photo') }}</label>
               <input type="file" class="form-control" name="main_image" id="main_image" accept="image/*">
               @if($row->main_image)
               <div class="mt-2">
@@ -99,7 +99,7 @@
 
             <!-- ======= Active Status ======= -->
             <div class="mb-3">
-              <label class="form-label">{{ __('admin.blogs.active_status') }}</label>
+              <label class="form-label">{{ __('admin.news.active_status') }}</label>
               <div>
                 <label class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="active" value="1"

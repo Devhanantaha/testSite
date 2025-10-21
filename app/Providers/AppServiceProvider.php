@@ -25,6 +25,8 @@ use App\Models\Faculty;
 use App\Models\Review;
 use App\Models\Blog;
 use App\Models\CertificationAbbreviation;
+use App\Models\Field;
+use App\Models\News;
 use App\Models\Section;
 use App\Models\Video;
 use App\Models\Year;
@@ -52,18 +54,25 @@ class AppServiceProvider extends ServiceProvider
     {
         $setting = Setting::where('status', '1')->first();
         $banners  = Banner::active()->latest()->get();
-        $countries = Country::active()->get();       
-       $about = AboutSetting::first();
+        $countries = Country::active()->get();
+        $about = AboutSetting::first();
         $landingSetting = LandingSetting::first();
         $blogs = Blog::active()->latest()->get();
         $sections = Section::active()->latest()->get();
         $downloads = Download::active()->latest()->get();
         $videos = Video::active()->latest()->get();
-       
-    
-       
+        $news = News::latest()->get();
+        $fields = Field::latest()->get();
+        $levels = Level::latest()->get();
+
+
+
+
         View::share([
             'setting' => $setting,
+            'levels' => $levels,
+            'fields' => $fields,
+            'news' => $news,
             'countries' => $countries,
             'about' => $about,
             'landing_setting' => $landingSetting,

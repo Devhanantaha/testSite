@@ -1,140 +1,104 @@
 @extends('admin.layouts.master')
-@section('title', $title)
+@section('title', 'عرض المستويات')
 @section('content')
-
 
 <div class="page-header d-print-none">
   <div class="container-xl">
     <div class="row g-2 align-items-center">
       <div class="col">
-      {{ Breadcrumbs::render('levels',$course) }}
-
+        {{ Breadcrumbs::render('levels') }}
       </div>
-      <!-- Page title actions -->
       <div class="col-auto ms-auto d-print-none">
         <div class="btn-list">
-
-          <a href="{{ route($route.'.create',$course->id) }}" class="btn btn-primary d-none d-sm-inline-block">
+          <a href="{{ route('admin.levels.create') }}" class="btn btn-primary d-none d-sm-inline-block">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M12 5l0 14" />
               <path d="M5 12l14 0" />
             </svg>
-            {{__('admin.btn_add_new')}} </a>
-
+            {{ __('admin.btn_add_new') }}
+          </a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="page-body">
   <div class="container-xl">
     <div class="row row-deck row-cards">
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">{{ $title }}</h3>
+            <h3 class="card-title">عرض المراحل</h3>
           </div>
-          <div class="card-body border-bottom py-3">
-            <div class="d-flex">
-              <!-- <div class="text-secondary">
-                Show
-                <div class="mx-2 d-inline-block">
-                  <input type="text" class="form-control form-control-sm" value="8" size="3" aria-label="Invoices count">
-                </div>
-                entries
-              </div>
-              <div class="ms-auto text-secondary">
-                Search:
-                <div class="ms-2 d-inline-block">
-                  <input type="text" class="form-control form-control-sm" aria-label="Search invoice">
-                </div>
-              </div> -->
-            </div>
-          </div>
+
           <div class="table-responsive">
-            <table class="table card-table table-vcenter text-nowrap datatable">
+            <table id="leveltable" class="table card-table table-vcenter text-nowrap">
               <thead>
                 <tr>
-                  <th class="w-1"><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select all invoices"></th>
-                  <th class="w-1">No. <!-- Download SVG icon from http://tabler-icons.io/i/chevron-up -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sm icon-thick" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M6 15l6 -6l6 6"></path>
-                    </svg>
-                  </th>
-                  <th> {{__('admin.levels.name')}}</th>
-                  <th> {{__('admin.levels.course')}}</th>
-                  <th> {{__('admin.levels.track')}}</th>
-                  <th> {{__('admin.levels.instructor')}}</th>
-                  <th>{{ __('admin.levels.start_date') }}</th>
-                  <th>{{ __('admin.levels.end_date') }}</th>
-
-                  <th>{{ __('admin.levels.period') }}</th>
-                  <th>{{ __('admin.levels.lectures_number') }}</th>
+                  <th class="w-1"><input class="form-check-input m-0 align-middle" type="checkbox"></th>
+                  <th class="w-1">No.</th>
+                  <th>{{ __('admin.levels.name_ar') }}</th>
+                  <th>{{ __('admin.countries.name') }}</th>
                   <th>{{ __('admin.levels.status') }}</th>
-
-
                   <th>{{ __('admin.levels.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($rows as $row)
-
+                @foreach($levels as $row)
                 <tr>
-                  <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
-                  <td><span class="text-secondary">{{$loop->iteration }}</span></td>
-                  <td>{{$row->name}}</td>
-                  <td>{{optional($row->course)->name}}</td>
-                  <td>{{optional($row->track)->name}}</td>
-                  <td>{{optional($row->instructor)->name}}</td>
-                  <td>{{$row->start_date}}</td>
-                  <td>{{$row->end_date}}</td>
-                  <td>{{$row->period}} {{ __($row->periodLabel)}}</td>
-                  <td> {{ $row->lectures()->count()}}</td>
-
-
+                  <td><input class="form-check-input m-0 align-middle" type="checkbox"></td>
+                  <td>{{ $loop->iteration }}</td>
+                  <td>{{ $row->name_ar }}</td>
+                  <td>{{ $row->country->name ?? '-' }}</td>
                   <td>
-
-
-                    <div class="form-check form-switch md-3" style="margin:10px">
-
-                      <input data-id="{{$row->id}}" data-type='App\Models\Level' class="form-check-input form-control toggole-class" type="checkbox" style="float: right;" role="switch" id="flexSwitchCheckDefault" @if($row->active==1) checked="checked" @endif name="active">
+                    <div class="form-check form-switch md-3">
+                      <input data-id="{{ $row->id }}" data-type='App\Models\Level' class="form-check-input form-control toggle-status" type="checkbox" role="switch" @if($row->active == 1) checked @endif name="active">
                     </div>
                   </td>
-
-
-                  <td style="width: 270px;">
-
-
-
-                    <a href="{{ route($route.'.edit',[$course->id,$row->id]) }}" class="btn btn-icon btn-primary btn-sm">
-                      <span class="far fa-edit "></span>
+                  <td class="text-end">
+                    <a href="{{ route('admin.levels.edit', $row->id) }}" title="{{ __('admin.edit') }}" class="btn btn-icon btn-primary btn-sm">
+                      <span class="far fa-edit"></span>
                     </a>
-
-                    <a href="{{ url('admin/levels/'.$row->id.'/lectures') }}" class="btn btn-icon btn-primary btn-sm">
-                      <i class="fa fa-level-up" aria-hidden="true"></i>
-                    </a>
-                    <button type="button" class="btn btn-icon btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$row->id }}">
+                    <button type="button" class="btn btn-icon btn-danger btn-sm" title="{{ __('admin.delete') }}" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$row->id}}">
                       <i class="fas fa-trash-alt"></i>
                     </button>
-                    <!-- Include Delete modal -->
-                    @include('admin.layouts.inc.custom-delete')
+                    @include('admin.layouts.inc.delete')
                   </td>
                 </tr>
                 @endforeach
-
               </tbody>
             </table>
           </div>
-          <div class="card-footer d-flex align-items-center">
-            {{ $rows->links()}}
-          </div>
+
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
 @endsection
+
+@push('scripts')
+<script>
+  let locale = '<?= app()->getLocale() == "ar" ? "Arabic" : "English" ?>';
+  let dir = '<?= app()->getLocale() == "ar" ? "rtl" : "ltr" ?>';
+  let url = `https://cdn.datatables.net/plug-ins/1.10.24/i18n/${locale}.json`;
+
+  new DataTable('#leveltable', {
+    initComplete: function(settings, json) {
+      $('#leveltable').removeClass('dataTable');
+    },
+    language: { url: url },
+    "scrollY": '400px',
+    "scrollCollapse": true,
+    "paging": true,
+    "columnDefs": [{
+      className: 'dt-center',
+      targets: '_all'
+    }],
+    "direction": dir
+  });
+</script>
+@endpush

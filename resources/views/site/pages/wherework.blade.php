@@ -24,7 +24,7 @@
             </div>
             <ul class="icons-list topmargin clearfix">
                 @foreach ($states as $state)                    
-                     <li><i class="icon-world"></i><a href="{{ route('state.show' , $state->id) }}"><span>{{ $state->LocalName }}</span></a></li>
+                     <li><i class="icon-world"></i><a href="#"><span>{{ $state->LocalName }}</span></a></li>
                 @endforeach
         
         </div>

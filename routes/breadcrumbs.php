@@ -14,23 +14,23 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
 });
 
 // Home > instructors
-Breadcrumbs::for('instructors', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('fields', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push(trans('navbar.instructors.list'), route('admin.instructors.index'));
+    $trail->push(trans('admin.field_title'), route('admin.fields.index'));
 });
 
-Breadcrumbs::for('add-instructors', function (BreadcrumbTrail $trail) {
-    $trail->parent('instructors');
-    $trail->push(trans('navbar.instructors.add'), route('admin.instructors.create'));
+Breadcrumbs::for('add-fields', function (BreadcrumbTrail $trail) {
+    $trail->parent('fields');
+    $trail->push(trans('navbar.fields.add'), route('admin.fields.create'));
 });
-Breadcrumbs::for('update-instructors', function (BreadcrumbTrail $trail, $row) {
-    $trail->parent('instructors');
-    $trail->push($row->name, route('admin.instructors.edit', $row));
+Breadcrumbs::for('update-fields', function (BreadcrumbTrail $trail, $row) {
+    $trail->parent('fields');
+    $trail->push($row->title_ar, route('admin.fields.edit', $row));
 });
 
-Breadcrumbs::for('show-instructors', function (BreadcrumbTrail $trail, $row) {
-    $trail->parent('instructors');
-    $trail->push($row->name, route('admin.instructors.show', $row));
+Breadcrumbs::for('show-fields', function (BreadcrumbTrail $trail, $row) {
+    $trail->parent('fields');
+    $trail->push($row->title_ar, route('admin.fields.show', $row));
 });
 
 // Home > students
@@ -141,7 +141,28 @@ Breadcrumbs::for('update-course-sections', function (BreadcrumbTrail $trail, $ro
 });
 
 
+
+
+
+Breadcrumbs::for('levels', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push(trans('admin.levels.title'), route('admin.levels.index'));
+});
+
+
+
+Breadcrumbs::for('add-levels', function (BreadcrumbTrail $trail) {
+    $trail->parent('levels');
+    $trail->push(trans('navbar.levels.add'), route('admin.levels.create'));
+});
+Breadcrumbs::for('update-levels', function (BreadcrumbTrail $trail, $row) {
+    $trail->parent('levels');
+    $trail->push($row->name_ar, route('admin.levels.edit', $row));
+});
+
+
 // Home > blogs
+
 Breadcrumbs::for('blogs', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push(trans('navbar.blogs.list'), route('admin.blogs.index'));
@@ -156,6 +177,45 @@ Breadcrumbs::for('update-blogs', function (BreadcrumbTrail $trail, $row) {
     $trail->push($row->title, route('admin.blogs.edit', $row));
 });
 
+
+
+Breadcrumbs::for('news', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push(trans('navbar.news.list'), route('admin.news.index'));
+});
+
+Breadcrumbs::for('add-news', function (BreadcrumbTrail $trail) {
+    $trail->parent('news');
+    $trail->push(trans('navbar.news.add'), route('admin.news.create'));
+});
+Breadcrumbs::for('update-news', function (BreadcrumbTrail $trail, $row) {
+    $trail->parent('news');
+    $trail->push($row->title, route('admin.news.edit', $row));
+});
+
+
+
+Breadcrumbs::for('projects', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push(trans('admin.projects.list'), route('admin.projects.index'));
+});
+
+Breadcrumbs::for('add-projects', function (BreadcrumbTrail $trail) {
+    $trail->parent('projects');
+    $trail->push(trans('admin.projects.add'), route('admin.projects.create'));
+});
+
+Breadcrumbs::for('update-projects', function (BreadcrumbTrail $trail, $row) {
+    $trail->parent('projects');
+    $trail->push($row->title_ar, route('admin.projects.edit', $row));
+});
+
+
+
+Breadcrumbs::for('show-projects', function (BreadcrumbTrail $trail, $row) {
+    $trail->parent('projects');
+    $trail->push($row->title_ar, route('admin.projects.show', $row));
+});
 
 Breadcrumbs::for('banners', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
@@ -367,25 +427,10 @@ Breadcrumbs::for('update-course-types', function (BreadcrumbTrail $trail, $row) 
 
 
 
-// Home > Course details  > Levels
-Breadcrumbs::for('levels', function (BreadcrumbTrail $trail, $course) {
-    $trail->parent('show-courses', $course);
-    $trail->push(trans('navbar.courses.list_levels'), route('admin.courses.levels.index', $course));
-});
 
-Breadcrumbs::for('add-levels', function (BreadcrumbTrail $trail, $course) {
-    $trail->parent('levels', $course);
-    $trail->push(trans('navbar.courses.add_level'), route('admin.courses.levels.create', $course));
-});
-Breadcrumbs::for('update-levels', function (BreadcrumbTrail $trail, $course, $row) {
-    $trail->parent('levels', $course);
-    $trail->push($row->name, route('admin.courses.levels.edit', [$course, $row]));
-});
 
-Breadcrumbs::for('show-levels', function (BreadcrumbTrail $trail, $course, $row) {
-    $trail->parent('levels', $course);
-    $trail->push($row->name, route('admin.courses.edit', $row));
-});
+
+
 
 
 

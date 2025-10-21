@@ -2,13 +2,6 @@
 @section('title', 'about')
 @section('content')
 
-
-
-
-
-
-
-
 @php
 $dir = app()->getLocale() == 'ar' ? 'rtl' : 'ltr';
 $textDir = $dir === 'rtl' ? 'text-end' : 'text-start';

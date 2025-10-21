@@ -1,7 +1,7 @@
 <aside class="navbar navbar-vertical  navbar-expand-lg @if(App::getLocale() == 'ar') navbar-right 
  @endif">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" href="#navbar-layout" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" href="#" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <h1 class="navbar-brand navbar-brand-autodark">
@@ -31,14 +31,14 @@
         </div>
       </div>
       <div class="d-none d-lg-flex">
-        <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" href="#navbar-layout" data-bs-toggle="tooltip" data-bs-placement="bottom">
+        <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom">
           <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
           </svg>
         </a>
-        <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode" href="#navbar-layout" data-bs-toggle="tooltip" data-bs-placement="bottom">
+        <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom">
           <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -139,7 +139,7 @@
         </div>
       </div>
       <div class="nav-item dropdown">
-        <a href="#" class="nav-link d-flex lh-1 text-reset p-0" href="#navbar-layout" data-bs-toggle="dropdown" aria-label="Open user menu">
+        <a href="#" class="nav-link d-flex lh-1 text-reset p-0" href="#" data-bs-toggle="dropdown" aria-label="Open user menu">
           <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
           <div class="d-none d-xl-block ps-2">
             <div>Paweł Kuna</div>
@@ -176,108 +176,76 @@
         </li>
 
 
-        @canany(['tracks-create','tracks-view','tracks-edit','tracks-delete',
-        'tracks-footer','course-types-create','course-types-view',
-        'course-types-edit','course-types-delete','courses-create','courses-view','courses-edit','courses-delete','recommened-courses-view',
-        'make-recommened-courses-view','recent-courses-view'])
 
-        <li class="nav-item  dropdown">
-          <a class="nav-link dropdown-toggle @if(request()->routeIs(['admin.comments.*','admin.courses.*','admin.recommendCourses','admin.startsoonCourses','admin.lectures.*','admin.levels.*','admin.tracks.*','admin.course-types.*','admin.coursesections.*'])) show @endif" href="" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true">
-            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                <path d="M4 13m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                <path d="M14 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                <path d="M14 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-              </svg>
-            </span>
-            <span class="nav-link-title">
-              {{ __('navbar.courses.title') }}
-            </span>
+
+
+
+
+
+
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs('admin.fields.*')) active @endif"
+            href="{{ url('admin/fields') }}">
+            <!-- Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layers" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <polyline points="12 2 2 7 12 12 22 7 12 2" />
+              <polyline points="2 17 12 22 22 17" />
+              <polyline points="2 12 12 17 22 12" />
+            </svg>
+            {{ __('navbar.fields.list') }}
           </a>
-          <div class="dropdown-menu  @if(request()->routeIs(['admin.coursesections.*','admin.coursereviews','admin.comments.*','admin.courses.*','admin.recommendCourses','admin.startsoonCourses','admin.lectures.*','admin.levels.*','admin.tracks.*','admin.course-types.*'])) show @endif">
-            <div class="dropdown-menu-columns ">
-              <div class="dropdown-menu-column ">
-                @canany(['tracks-create','tracks-view','tracks-edit','tracks-delete','tracks-footer'])
-                <a class="dropdown-item @if(request()->routeIs(['admin.tracks.index','admin.tracks.edit'])) active @endif" href="{{ url('admin/tracks')}}">
-                  {{ __('navbar.courses.list_tracks') }}
-
-                </a>
-                @endcanany
-                @canany(['tracks-create'])
-
-                <a class="dropdown-item @if(request()->routeIs(['admin.tracks.create'])) active @endif" href="{{ url('admin/tracks/create')}}">
-                  {{ __('navbar.courses.add_track') }}
-
-                </a>
-                @endcanany
-                @canany(['course-sections-create','course-sections-view','course-sections-edit','course-sections-delete'])
-                <a class="dropdown-item @if(request()->routeIs(['admin.coursesections.index','admin.coursesections.edit'])) active @endif" href="{{ url('admin/course-sections')}}">
-                  {{ __('navbar.courses.list_sections') }}
-
-                </a>
-                @endcanany
-                @canany(['course-sections-create'])
-                <a class="dropdown-item @if(request()->routeIs(['admin.coursesections.create'])) active @endif" href="{{ url('admin/course-sections/create')}}">
-                  {{ __('navbar.courses.add_section') }}
-
-                </a>
-                @endcanany
-              
-
-              
-              
-            
-              
-
-                @canany(['recent-courses-view'])
-                <a class="dropdown-item @if(request()->routeIs(['admin.startsoonCourses'])) active @endif" href="{{ url('admin/start-soon-courses')}}">
-
-                  {{ __('navbar.courses.start_soon_courses') }}
-
-                </a>
-                @endcanany
-
-                @canany(['recommened-courses-view'])
-                <a class="dropdown-item @if(request()->routeIs(['admin.recommendCourses'])) active @endif" href="{{ url('admin/recommend-courses?recommend=1')}}">
-
-                  {{ __('navbar.courses.recommend_courses') }}
-
-                </a>
-                @endcanany
-
-                @canany(['courses-create','courses-view','courses-edit','courses-delete'])
-
-                <a class="dropdown-item @if(request()->routeIs('admin.courses.index')) active @endif" href="{{ url('admin/courses')}}">
-                  {{ __('navbar.courses.all_courses') }}
-
-                </a>
-                @endcanany
-
-                @canany(['courses-create'])
-                <a class="dropdown-item @if(request()->routeIs('admin.courses.create')) active @endif" href="{{ url('admin/courses/create')}}">
-                  {{ __('navbar.courses.add_course') }}
-
-                </a>
-                @endcanany
-
-                @canany(['course-types-create','course-types-view','course-types-edit','course-types-delete'])
-                <a class="dropdown-item @if(request()->routeIs(['admin.course-types.index','admin.course-types.edit'])) active @endif" href="{{ url('admin/course-types')}}">
-                  {{ __('navbar.courses.list_course_types') }}
-
-                </a>
-                @endcanany
-
-                <a class="dropdown-item  @if(request()->routeIs('admin.countries.*')) active @endif " href="{{url('admin/countries')}}">
-                  {{ __('navbar.countries') }}
-                </a>
-              </div>
-
-            </div>
-          </div>
         </li>
-        @endcanany
+
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs('admin.levels.*')) active @endif"
+            href="{{ url('admin/levels') }}">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stairs" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M4 20h16v-8h-4v-4h-4v-4h-4v16z" />
+            </svg>
+            {{ __('navbar.levels.list') }}
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs('admin.countries.*')) active @endif"
+            href="{{ url('admin/countries') }}">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-flag" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M5 5v16" />
+              <path d="M5 5a5 5 0 0 1 5 -5h4a5 5 0 0 1 5 5v9a5 5 0 0 1 -5 5h-4a5 5 0 0 1 -5 -5z" />
+            </svg>
+            {{ __('navbar.countries') }}
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs('admin.projects.*')) active @endif"
+            href="{{ url('admin/projects') }}">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-briefcase" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v13a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-13z" />
+              <path d="M16 3v4h-8v-4z" />
+            </svg>
+            {{ __('admin.projects.list') }}
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <li class="nav-item @if(request()->routeIs('admin.banners.*')) active @endif">
           <a class="nav-link @if(request()->routeIs('admin.banners.*')) active @endif" href="{{ route('admin.banners.index') }}">
@@ -297,293 +265,268 @@
         </li>
 
 
-        @canany(['downloads-create','downloads-edit','downloads-delete','downloads-view'])
-        <li class=" nav-item dropdown">
-          <a class="nav-link dropdown-toggle @if(request()->routeIs('admin.downloads.*')) show @endif" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
-            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-discount">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M9 15l6 -6" />
-                <circle cx="9.5" cy="9.5" r=".5" fill="currentColor" />
-                <circle cx="14.5" cy="14.5" r=".5" fill="currentColor" />
-                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-              </svg>
-            </span>
-            <span class="nav-link-title">
-              {{ __('navbar.downloads.downloads_management') }}
-            </span>
-          </a>
-          <div class="dropdown-menu @if(request()->routeIs('admin.downloads.*')) show @endif">
-            <div class="dropdown-menu-columns">
-              <div class="dropdown-menu-column">
-                @canany(['downloads-edit','downloads-delete','downloads-view'])
 
-                <a class="dropdown-item @if(request()->routeIs(['admin.downloads.index','admin.downloads.edit'])) active @endif" href="{{url('/admin/downloads')}}">
-                  {{ __('navbar.downloads.list') }}
-
-                </a>
-                @endcanany
-                @canany(['downloads-create'])
-                <a class="dropdown-item @if(request()->routeIs('admin.downloads.create')) active @endif" href="{{url('/admin/downloads/create')}}">
-                  {{ __('navbar.downloads.add') }}
-                </a>
-                @endcanany
-
-              </div>
-            </div>
-          </div>
-        </li>
-        @endcanany
-
-
-        @canany(['videos-create','videos-edit','videos-delete','videos-view'])
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle @if(request()->routeIs('admin.videos.*')) show @endif" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
-            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-discount">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M9 15l6 -6" />
-                <circle cx="9.5" cy="9.5" r=".5" fill="currentColor" />
-                <circle cx="14.5" cy="14.5" r=".5" fill="currentColor" />
-                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-              </svg>
-            </span>
-            <span class="nav-link-title">
-              {{ __('navbar.videos.videos_management') }}
-            </span>
-          </a>
-          <div class="dropdown-menu @if(request()->routeIs('admin.videos.*')) show @endif">
-            <div class="dropdown-menu-columns">
-              <div class="dropdown-menu-column">
-                @canany(['videos-edit','videos-delete','videos-view'])
-
-                <a class="dropdown-item @if(request()->routeIs(['admin.videos.index','admin.videos.edit'])) active @endif" href="{{url('/admin/videos')}}">
-                  {{ __('navbar.videos.list') }}
-
-                </a>
-                @endcanany
-                @canany(['videos-create'])
-                <a class="dropdown-item @if(request()->routeIs('admin.videos.create')) active @endif" href="{{url('/admin/videos/create')}}">
-                  {{ __('navbar.videos.add') }}
-                </a>
-                @endcanany
-
-              </div>
-            </div>
-          </div>
-        </li>
-        @endcanany
-
-
-
-
-
-        @canany(['faq-create','faq-edit','faq-delete','faq-view'])
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle @if(request()->routeIs('admin.questions.*')) show @endif" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
-            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-discount">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M9 15l6 -6" />
-                <circle cx="9.5" cy="9.5" r=".5" fill="currentColor" />
-                <circle cx="14.5" cy="14.5" r=".5" fill="currentColor" />
-                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-              </svg>
-            </span>
-            <span class="nav-link-title">
-              {{ __('navbar.faq.faq_management') }}
-            </span>
-          </a>
-          <div class="dropdown-menu @if(request()->routeIs('admin.questions.*')) show @endif">
-            <div class="dropdown-menu-columns">
-              <div class="dropdown-menu-column">
-                @canany(['faq-edit','faq-delete','faq-view'])
-
-                <a class="dropdown-item @if(request()->routeIs(['admin.questions.index','admin.questions.edit'])) active @endif" href="{{url('/admin/questions')}}">
-                  {{ __('navbar.faq.list') }}
-
-                </a>
-                @endcanany
-                @canany(['faq-create'])
-                <a class="dropdown-item @if(request()->routeIs('admin.questions.create')) active @endif" href="{{url('/admin/questions/create')}}">
-                  {{ __('navbar.faq.add') }}
-                </a>
-                @endcanany
-
-              </div>
-            </div>
-          </div>
-        </li>
-        @endcanany
-
-
-        @canany(['blogs-create','blogs-edit','blogs-delete','blogs-view'])
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle @if(request()->routeIs(['admin.blogs.index','admin.blogs.edit','admin.blogs.create'])) show @endif " href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
-            <span class="nav-link-icon d-md-none d-lg-inline-block">
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M3 9l9 6l9 -6l-9 -6l-9 6"></path>
-                <path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10"></path>
-                <path d="M3 19l6 -6"></path>
-                <path d="M15 13l6 6"></path>
-              </svg>
-            </span>
-            <span class="nav-link-title">
-              {{ __('navbar.blogs.blogs_management') }}
-            </span>
-          </a>
-          <div class="dropdown-menu  @if(request()->routeIs(['admin.blogs.index','admin.blogs.edit','admin.blogs.create']))  show @endif ">
-            <div class="dropdown-menu-columns">
-              <div class="dropdown-menu-column">
-                @canany(['blogs-edit','blogs-delete','blogs-view'])
-                <a class="dropdown-item @if(request()->routeIs(['admin.blogs.index','admin.blogs.edit'])) active @endif" href="{{ url('admin/blogs')}}">
-                  {{ __('navbar.blogs.list') }}
-
-                </a>
-                @endcanany
-                @canany(['blogs-create'])
-                <a class="dropdown-item @if(request()->routeIs(['admin.blogs.create'])) active @endif" href="{{ url('admin/blogs/create')}}">
-                  {{ __('navbar.blogs.add') }}
-
-                </a>
-                @endcanany
-              </div>
-            </div>
-          </div>
-        </li>
-        @endcanany
-
-
-        <li class="nav-item @if(request()->routeIs('admin.contacts.*')) active @endif">
-          <a class="nav-link @if(request()->routeIs('admin.contacts.*')) active @endif"
-            href="{{ route('admin.contacts.index') }}">
-            <span class="nav-link-icon d-md-none d-lg-inline-block">
-              <!-- Contact icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M21 15a2 2 0 0 1 -2 2h-4l-4 4v-4h-2a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v8z" />
-              </svg>
-            </span>
-            <span class="nav-link-title">
-              {{ __('navbar.contacts.title') }}
-            </span>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs(['admin.downloads.index', 'admin.downloads.edit'])) active @endif"
+            href="{{ url('admin/downloads') }}">
+            <!-- Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="20" height="20"
+              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+              <polyline points="7 11 12 16 17 11" />
+              <line x1="12" y1="4" x2="12" y2="16" />
+            </svg>
+            {{ __('navbar.downloads.list') }}
           </a>
         </li>
 
 
-        @canany(['users-create', 'users-view','users-edit', 'users-delete','role-view', 'role-edit','roles-create', 'roles-delete' ])
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle @if(request()->routeIs(['admin.users.*','admin.roles.*'])) show @endif" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
-            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-              </svg>
-            </span>
-            <span class="nav-link-title">
-              {{ __('navbar.user_managment') }}
-            </span>
-          </a>
-          <div class="dropdown-menu @if(request()->routeIs(['admin.users.*','admin.roles.*'])) show @endif">
-            <div class="dropdown-menu-columns">
-              <div class="dropdown-menu-column">
-                @canany(['role-view', 'role-edit', 'roles-delete' ])
-                <a class="dropdown-item @if(request()->routeIs(['admin.roles.index','admin.roles.edit'])) active @endif" href="{{url('admin/roles')}}">
-                  {{ __('navbar.roles.list') }}
-                </a>
-                @endcanany
-                @canany([ 'roles-create'])
-                <a class="dropdown-item @if(request()->routeIs('admin.roles.create')) active @endif" href="{{url('admin/roles/create')}}">
-                  {{ __('navbar.roles.add') }}
-                </a>
-                @endcanany
-
-                @canany([ 'users-view','users-edit', 'users-delete'])
-                <a class="dropdown-item @if(request()->routeIs(['admin.users.index','admin.users.edit'])) active @endif" href="{{url('admin/users')}}">
-                  {{ __('navbar.users.list') }}
-
-                </a>
-                @endcanany
-                @canany([ 'users-create'])
-                <a class="dropdown-item @if(request()->routeIs('admin.users.create')) active @endif" href="{{url('admin/users/create')}}">
-                  {{ __('navbar.users.add') }}
-
-                </a>
-                @endcanany
-
-
-              </div>
-            </div>
-          </div>
-        </li>
-        @endcanany
-        <!-- Not  -->
-
-
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle  @if(request()->routeIs(['admin.languages.*','admin.settings.zoom','admin.bulk.import-export','admin.settings.mail','admin.faq.*','admin.settings.aboutUSSetting','admin.payment-types.*','admin.countries.*','admin.teams.*','admin.parteners.*','admin.setting.index','admin.policies.*']))  show @endif " href="#navbar-extra" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
-            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/star -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
-                <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-              </svg>
-            </span>
-            <span class="nav-link-title">
-              {{ __('navbar.master_data')}}
-            </span>
-          </a>
-          <div class="dropdown-menu @if(request()->routeIs(['admin.languages.*','admin.settings.zoom','admin.bulk.import-export','admin.settings.mail','admin.reviews.*','admin.langauges.*','admin.settings.contactUs','admin.faq.*','admin.settings.aboutUSSetting','admin.setting.landingSetting','admin.payment-types.*','admin.countries.*','admin.teams.*','admin.parteners.*','admin.setting.index','admin.policies.*']))  show @endif ">
-            <div class="dropdown-menu-columns">
-              <div class="dropdown-menu-column">
-
-                <a class="dropdown-item  @if(request()->routeIs('admin.setting.index')) active @endif " href="{{url('admin/setting')}}">
-
-                  {{ __('navbar.settings.general_settings') }}
-                </a>
-
-                <a class="dropdown-item  @if(request()->routeIs('admin.setting.landingSetting')) active @endif " href="{{url('admin/landing-page-settings')}}">
-
-                  {{ __('navbar.settings.home_settings') }}
-                </a>
-
-                <a class="dropdown-item  @if(request()->routeIs('admin.settings.aboutUSSetting')) active @endif " href="{{url('admin/about-us-settings')}}">
-
-                  {{ __('navbar.settings.about_us_settings') }}
-                </a>
-
-                <a class="dropdown-item  @if(request()->routeIs('admin.settings.contactUs')) active @endif " href="{{url('admin/contact-us-settings')}}">
-
-                  {{ __('navbar.settings.contactus_settings') }}
-                </a>
-
-                <a class="dropdown-item  @if(request()->routeIs('admin.parteners.*')) active @endif " href="{{url('admin/parteners')}}">
-
-                  {{ __('navbar.settings.parteners') }}
-                </a>
-                <a class="dropdown-item  @if(request()->routeIs('admin.teams.*')) active @endif " href="{{url('admin/teams')}}">
-
-                  {{ __('navbar.settings.teams') }}
-                </a>
 
 
 
 
 
 
-              </div>
-
-            </div>
-          </div>
-        </li>
 
 
-      </ul>
-    </div>
+@canany(['videos-view', 'videos-create', 'videos-edit', 'videos-delete'])
+<li class="nav-item">
+  <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs('admin.videos.*')) active @endif"
+     href="{{ url('admin/videos') }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         class="icon icon-tabler icon-tabler-video">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <rect x="3" y="6" width="15" height="12" rx="2" />
+      <path d="M18 8l4 4l-4 4z" />
+    </svg>
+    {{ __('navbar.videos.videos_management') }}
+  </a>
+</li>
+@endcanany
+
+@canany(['faq-view', 'faq-create', 'faq-edit', 'faq-delete'])
+<li class="nav-item">
+  <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs('admin.questions.*')) active @endif"
+     href="{{ url('admin/questions') }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         class="icon icon-tabler icon-tabler-help-circle">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 16h.01" />
+      <path d="M12 13a2 2 0 1 0 -2 -2" />
+    </svg>
+    {{ __('navbar.faq.faq_management') }}
+  </a>
+</li>
+@endcanany
+
+
+
+@canany(['blogs-view', 'blogs-create', 'blogs-edit', 'blogs-delete'])
+<li class="nav-item">
+  <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs('admin.blogs.*')) active @endif"
+     href="{{ url('admin/blogs') }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         class="icon icon-tabler icon-tabler-news">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M16 6v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-14a2 2 0 0 0 -2 -2h-2" />
+      <path d="M16 8h4v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-16" />
+      <path d="M8 12h8" />
+      <path d="M8 16h8" />
+      <path d="M8 8h8" />
+    </svg>
+    {{ __('navbar.blogs.blogs_management') }}
+  </a>
+</li>
+@endcanany
+
+
+
+
+
+
+
+
+
+
+
+<li class="nav-item">
+    <a class="nav-link {{ request()->is('admin/news*') ? 'active' : '' }}" href="{{ route('admin.news.index') }}">
+        <span class="nav-link-icon d-md-none d-lg-inline-block">
+            {{-- Custom SVG icon for News --}}
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-news" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-13a1 1 0 0 1 1 -1h11" />
+                <path d="M16 8h4" />
+                <path d="M16 12h4" />
+                <path d="M16 16h4" />
+                <path d="M8 8h4v4h-4z" />
+            </svg>
+        </span>
+        <span class="nav-link-title">
+            {{ __('admin.News') }}
+        </span>
+    </a>
+</li>
+
+
+
+  <li class="nav-item @if(request()->routeIs('admin.contacts.*')) active @endif">
+    <a class="nav-link @if(request()->routeIs('admin.contacts.*')) active @endif"
+      href="{{ route('admin.contacts.index') }}">
+      <span class="nav-link-icon d-md-none d-lg-inline-block">
+        <!-- Contact icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+          viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M21 15a2 2 0 0 1 -2 2h-4l-4 4v-4h-2a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v8z" />
+        </svg>
+      </span>
+      <span class="nav-link-title">
+        {{ __('navbar.contacts.title') }}
+      </span>
+    </a>
+  </li>
+
+
+  {{-- 👤 Users --}}
+@canany(['users-view', 'users-create', 'users-edit', 'users-delete'])
+<li class="nav-item">
+  <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs('admin.users.*')) active @endif"
+     href="{{ url('admin/users') }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round" class="icon icon-tabler icon-tabler-users">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M17 11v-2a4 4 0 1 0 -8 0v2"/>
+      <path d="M12 14c-4.418 0 -8 1.79 -8 4v2h16v-2c0 -2.21 -3.582 -4 -8 -4z"/>
+    </svg>
+    {{ __('navbar.users.list') }}
+  </a>
+</li>
+@endcanany
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- ⚙️ General Settings --}}
+<li class="nav-item">
+  <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs('admin.setting.index')) active @endif"
+     href="{{ url('admin/setting') }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round" class="icon icon-tabler icon-tabler-settings">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+      <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+    </svg>
+    {{ __('navbar.settings.general_settings') }}
+  </a>
+</li>
+
+
+{{-- 🏠 Home Page Settings --}}
+<li class="nav-item">
+  <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs('admin.setting.landingSetting')) active @endif"
+     href="{{ url('admin/landing-page-settings') }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round" class="icon icon-tabler icon-tabler-home">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M5 12l-2 2l9 9l9 -9l-2 -2"/>
+      <path d="M9 21v-8h6v8"/>
+      <path d="M9 3l6 6l-6 6"/>
+    </svg>
+    {{ __('navbar.settings.home_settings') }}
+  </a>
+</li>
+
+
+{{-- ℹ️ About Us Settings --}}
+<li class="nav-item">
+  <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs('admin.settings.aboutUSSetting')) active @endif"
+     href="{{ url('admin/about-us-settings') }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round" class="icon icon-tabler icon-tabler-info-circle">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 16v-4"/>
+      <path d="M12 8h.01"/>
+    </svg>
+    {{ __('navbar.settings.about_us_settings') }}
+  </a>
+</li>
+
+
+{{-- 📞 Contact Us Settings --}}
+<li class="nav-item">
+  <a class="nav-link d-flex align-items-center gap-2 @if(request()->routeIs('admin.settings.contactUs')) active @endif"
+     href="{{ url('admin/contact-us-settings') }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round" class="icon icon-tabler icon-tabler-phone">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M5 4h4l2 5l-2 2a11 11 0 0 0 6 6l2 -2l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -14 -14a2 2 0 0 1 2 -2"/>
+    </svg>
+    {{ __('navbar.settings.contactus_settings') }}
+  </a>
+</li>
+
+
+
+  </ul>
+  </div>
   </div>
 </aside>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Get all dropdown toggles
+    const dropdownToggles = document.querySelectorAll('.nav-link.dropdown-toggle');
+
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const parent = this.parentElement;
+        const menu = parent.querySelector('.dropdown-menu');
+
+        // Close other open dropdowns
+        document.querySelectorAll('.nav-item.dropdown').forEach(item => {
+          if (item !== parent) {
+            item.classList.remove('show');
+            const subMenu = item.querySelector('.dropdown-menu');
+            if (subMenu) subMenu.classList.remove('show');
+          }
+        });
+
+        // Toggle current dropdown
+        parent.classList.toggle('show');
+        if (menu) menu.classList.toggle('show');
+      });
+    });
+  });
+</script>
